@@ -1,6 +1,6 @@
 # ${APP}
 
-[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/kitos9112/aws-get-secret-value.svg)](https://hub.docker.com/r/kitos9112/aws_get_secret_value/tags)
+[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/kitos9112/get-aws-secret-value.svg)](https://hub.docker.com/r/kitos9112/aws_get_secret_value/tags)
 
 Retrieves an AWS secret value as-is after given its secret name. The script can read an AWS Profile name as well as a credentials file in the CLI, otherwise it will automatically load its settings following AWS SDK standards
 
@@ -10,7 +10,7 @@ Retrieves an AWS secret value as-is after given its secret name. The script can 
 * EC2 Instance Metadata (credentials only)
 
 ```bash
-> aws-get-secret-value
+> get-aws-secret-value
 Help:
   -aws-region string
         AWS Region where to send requests to (default "default")
@@ -70,6 +70,6 @@ The simplest example that could easily be integrated into a CICD pipeline:
 ```shell
 > export AWS_PROFILE=myAwsProfile
 > export AWS_REGION=eu-west-1
-> aws-get-secret-value --secret-name my_secret_name
+> get-aws-secret-value --secret-name my_secret_name
 mySecretValue
 ```
