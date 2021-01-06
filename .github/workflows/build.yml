@@ -14,13 +14,7 @@ jobs:
     steps:
       - name: Install pre-requisites (1)
         run: |
-          apk add --no-cache make jq zip curl git npm
-      - name: Install pre-requisites (2)
-        run: |
-          subst_version="1.1.1"
-          curl -sSLO https://github.com/sgreben/subst/releases/download/${subst_version}/subst_${subst_version}_linux_x86_64.zip
-          unzip subst_${subst_version}_linux_x86_64.zip
-          mv subst /usr/local/bin
+          apk add --no-cache make jq zip curl git npm gettext
       - name: Install pre-requisites (3)
         run: |
           go get github.com/github/hub
