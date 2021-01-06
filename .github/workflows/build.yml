@@ -15,7 +15,7 @@ jobs:
       - name: Install pre-requisites (1)
         run: |
           apk add --no-cache make jq zip curl git npm gettext
-      - name: Install pre-requisites (3)
+      - name: Install pre-requisites (2)
         run: |
           go get github.com/github/hub
       - name: Checkout

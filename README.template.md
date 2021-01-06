@@ -72,4 +72,17 @@ The simplest example that could easily be integrated into a CICD pipeline:
 > export AWS_REGION=eu-west-1
 > get-aws-secret-value --secret-name my_secret_name
 mySecretValue
+
 ```
+
+Or in case you leverage IaC within your favourite public cloud using Terragrunt, you could retrieve the value of an AWS secret previously created and pre-populated by more complext data structures (e.g. JSON)
+
+``` hcl
+# terragrunt.hcl
+inputs = {
+my_secret_var1 = lookup(jsondecode(run_cmd("--terragrunt-quiet", "/usr/local/bin/aws-get-secret-value", "--secret-name", "my_secret", "--aws-region", "eu-west-1")), "secretKey1")
+my_secret_var2 = lookup(jsondecode(run_cmd("--terragrunt-quiet", "/usr/local/bin/aws-get-secret-value", "--secret-name", "my_secret", "--aws-region", "eu-west-1")), "secretKey2")
+}
+```
+
+As you can see, a simple cross-platform binary file could be utilised in many scenarios that aid when retrieving an AWS secret value.
