@@ -44,14 +44,14 @@ Or [download the binary](https://github.com/kitos9112/get-aws-secret-value/relea
 
 ```bash
 # Linux
-curl -L https://github.com/kitos9112/get-aws-secret-value/releases/download/0.1.3/get-aws-secret-value_0.1.3_linux_x86_64.tar.gz | tar xz
+curl -L https://github.com/kitos9112/get-aws-secret-value/releases/download/0.1.4/get-aws-secret-value_0.1.4_linux_x86_64.tar.gz | tar xz
 
 # OS X
-curl -L https://github.com/kitos9112/get-aws-secret-value/releases/download/0.1.3/get-aws-secret-value_0.1.3_osx_x86_64.tar.gz | tar xz
+curl -L https://github.com/kitos9112/get-aws-secret-value/releases/download/0.1.4/get-aws-secret-value_0.1.4_osx_x86_64.tar.gz | tar xz
 
 # Windows
-curl -LO https://github.com/kitos9112/get-aws-secret-value/releases/download/0.1.3/get-aws-secret-value_0.1.3_windows_x86_64.zip
-unzip get-aws-secret-value_0.1.3_windows_x86_64.zip
+curl -LO https://github.com/kitos9112/get-aws-secret-value/releases/download/0.1.4/get-aws-secret-value_0.1.4_windows_x86_64.zip
+unzip get-aws-secret-value_0.1.4_windows_x86_64.zip
 ```
 
 ## Use it
@@ -72,12 +72,17 @@ The simplest example that could easily be integrated into a CICD pipeline:
 > export AWS_REGION=eu-west-1
 > get-aws-secret-value --secret-name my_secret_name
 mySecretValue
+
 ```
+
 Or in case you leverage IaC within your favourite public cloud using Terragrunt, you could retrieve the value of an AWS secret previously created and pre-populated by more complext data structures (e.g. JSON)
 
-``` yaml
+``` hcl
+# terragrunt.hcl
+inputs = {
 my_secret_var1 = lookup(jsondecode(run_cmd("--terragrunt-quiet", "/usr/local/bin/aws-get-secret-value", "--secret-name", "my_secret", "--aws-region", "eu-west-1")), "secretKey1")
 my_secret_var2 = lookup(jsondecode(run_cmd("--terragrunt-quiet", "/usr/local/bin/aws-get-secret-value", "--secret-name", "my_secret", "--aws-region", "eu-west-1")), "secretKey2")
+}
 ```
 
-As you can see, a simple cross-platform binary file could be utilised in many scenarios that aid during critical phases when retrieving a secret value.
+As you can see, a simple cross-platform binary file could be utilised in many scenarios that aid when retrieving an AWS secret value.
