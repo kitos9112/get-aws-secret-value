@@ -44,14 +44,14 @@ Or [download the binary](https://github.com/kitos9112/get-aws-secret-value/relea
 
 ```bash
 # Linux
-curl -L https://github.com/kitos9112/get-aws-secret-value/releases/download/0.1.1/get-aws-secret-value_0.1.1_linux_x86_64.tar.gz | tar xz
+curl -L https://github.com/kitos9112/get-aws-secret-value/releases/download/0.1.2/get-aws-secret-value_0.1.2_linux_x86_64.tar.gz | tar xz
 
 # OS X
-curl -L https://github.com/kitos9112/get-aws-secret-value/releases/download/0.1.1/get-aws-secret-value_0.1.1_osx_x86_64.tar.gz | tar xz
+curl -L https://github.com/kitos9112/get-aws-secret-value/releases/download/0.1.2/get-aws-secret-value_0.1.2_osx_x86_64.tar.gz | tar xz
 
 # Windows
-curl -LO https://github.com/kitos9112/get-aws-secret-value/releases/download/0.1.1/get-aws-secret-value_0.1.1_windows_x86_64.zip
-unzip get-aws-secret-value_0.1.1_windows_x86_64.zip
+curl -LO https://github.com/kitos9112/get-aws-secret-value/releases/download/0.1.2/get-aws-secret-value_0.1.2_windows_x86_64.zip
+unzip get-aws-secret-value_0.1.2_windows_x86_64.zip
 ```
 
 ## Use it
@@ -60,7 +60,7 @@ unzip get-aws-secret-value_0.1.1_windows_x86_64.zip
 
 get-aws-secret-value [OPTIONS] [COMMAND [ARGS...]]
 
-/bin/sh: 1: get-aws-secret-value: not found
+/bin/sh: get-aws-secret-value: not found
 ```
 
 ### Examples
