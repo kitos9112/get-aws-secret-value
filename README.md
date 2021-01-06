@@ -44,14 +44,14 @@ Or [download the binary](https://github.com/kitos9112/get-aws-secret-value/relea
 
 ```bash
 # Linux
-curl -L https://github.com/kitos9112/get-aws-secret-value/releases/download/0.1.0/get-aws-secret-value_0.1.0_linux_x86_64.tar.gz | tar xz
+curl -L https://github.com/kitos9112/get-aws-secret-value/releases/download/0.1.1/get-aws-secret-value_0.1.1_linux_x86_64.tar.gz | tar xz
 
 # OS X
-curl -L https://github.com/kitos9112/get-aws-secret-value/releases/download/0.1.0/get-aws-secret-value_0.1.0_osx_x86_64.tar.gz | tar xz
+curl -L https://github.com/kitos9112/get-aws-secret-value/releases/download/0.1.1/get-aws-secret-value_0.1.1_osx_x86_64.tar.gz | tar xz
 
 # Windows
-curl -LO https://github.com/kitos9112/get-aws-secret-value/releases/download/0.1.0/get-aws-secret-value_0.1.0_windows_x86_64.zip
-unzip get-aws-secret-value_0.1.0_windows_x86_64.zip
+curl -LO https://github.com/kitos9112/get-aws-secret-value/releases/download/0.1.1/get-aws-secret-value_0.1.1_windows_x86_64.zip
+unzip get-aws-secret-value_0.1.1_windows_x86_64.zip
 ```
 
 ## Use it
@@ -60,17 +60,7 @@ unzip get-aws-secret-value_0.1.0_windows_x86_64.zip
 
 get-aws-secret-value [OPTIONS] [COMMAND [ARGS...]]
 
-Usage of get-aws-secret-value:
-  -aws-region string
-    	AWS Region where to send requests to (default "default")
-  -credentials-file string
-    	Full path to credentials file (default "/home/msoutullo/.aws/credentials")
-  -profile string
-    	AWS Profile to use (default "default")
-  -secret-name string
-    	Secret To Fetch (default "secret")
-  -secret-version string
-    	Version of secret To Fetch (default "version")
+/bin/sh: 1: get-aws-secret-value: not found
 ```
 
 ### Examples
