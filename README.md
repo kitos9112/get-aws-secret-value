@@ -44,14 +44,14 @@ Or [download the binary](https://github.com/kitos9112/get-aws-secret-value/relea
 
 ```bash
 # Linux
-curl -L https://github.com/kitos9112/get-aws-secret-value/releases/download/0.1.106/get-aws-secret-value_0.1.106_linux_x86_64.tar.gz | tar xz
+curl -L https://github.com/kitos9112/get-aws-secret-value/releases/download/0.1.107/get-aws-secret-value_0.1.107_linux_x86_64.tar.gz | tar xz
 
 # OS X
-curl -L https://github.com/kitos9112/get-aws-secret-value/releases/download/0.1.106/get-aws-secret-value_0.1.106_osx_x86_64.tar.gz | tar xz
+curl -L https://github.com/kitos9112/get-aws-secret-value/releases/download/0.1.107/get-aws-secret-value_0.1.107_osx_x86_64.tar.gz | tar xz
 
 # Windows
-curl -LO https://github.com/kitos9112/get-aws-secret-value/releases/download/0.1.106/get-aws-secret-value_0.1.106_windows_x86_64.zip
-unzip get-aws-secret-value_0.1.106_windows_x86_64.zip
+curl -LO https://github.com/kitos9112/get-aws-secret-value/releases/download/0.1.107/get-aws-secret-value_0.1.107_windows_x86_64.zip
+unzip get-aws-secret-value_0.1.107_windows_x86_64.zip
 ```
 
 ## Use it
