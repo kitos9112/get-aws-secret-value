@@ -1,7 +1,7 @@
 # github.com/alyu/configparser v0.0.0-20191103060215-744e9a66e7bc
 ## explicit
 github.com/alyu/configparser
-# github.com/aws/aws-sdk-go v1.39.2
+# github.com/aws/aws-sdk-go v1.39.3
 ## explicit
 github.com/aws/aws-sdk-go/aws
 github.com/aws/aws-sdk-go/aws/awserr
