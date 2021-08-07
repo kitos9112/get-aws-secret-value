@@ -2,12 +2,18 @@
 
 [![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/kitos9112/get-aws-secret-value.svg)](https://hub.docker.com/r/kitos9112/aws_get_secret_value/tags)
 
-Retrieves an AWS secret value as-is after given its secret name. The script can read an AWS Profile name as well as a credentials file in the CLI, otherwise it will automatically load its settings following AWS SDK standards
+Retrieves an AWS secret value as-is and throws its content to `stdout` in plain UTF-8 encoding.
 
-* Environment Variables
-* Shared Credentials file
+Capable of reading an AWS Profile name as well as a credentials file from the `CLI`
+
+Defaults to AWS SDK standards:
+
+* Environment variables.
+* Shared credentials file.
 * Shared Configuration file (if SharedConfig is enabled)
-* EC2 Instance Metadata (credentials only)
+* If your application uses an ECS task definition or RunTask API operation, IAM role for tasks.
+* If your application is running on an Amazon EC2 instance, IAM role for Amazon EC2.
+* If your application is running on an EKS cluster with IRSA enabled, IAM role for pods.
 
 ```bash
 > get-aws-secret-value
@@ -43,13 +49,19 @@ go get -u github.com/kitos9112/${APP}
 Or [download the binary](https://github.com/kitos9112/${APP}/releases/latest) from the releases page.
 
 ```bash
-# Linux
+# Linux x86_64
 curl -L https://github.com/kitos9112/${APP}/releases/download/${VERSION}/${APP}_${VERSION}_linux_x86_64.tar.gz | tar xz
 
-# OS X
+# Linux arm64
+curl -L https://github.com/kitos9112/${APP}/releases/download/${VERSION}/${APP}_${VERSION}_linux_arm64.tar.gz | tar xz
+
+# OS X x86_64
 curl -L https://github.com/kitos9112/${APP}/releases/download/${VERSION}/${APP}_${VERSION}_osx_x86_64.tar.gz | tar xz
 
-# Windows
+# OS X arm64
+curl -L https://github.com/kitos9112/${APP}/releases/download/${VERSION}/${APP}_${VERSION}_osx_arm64.tar.gz | tar xz
+
+# Windows x86_64
 curl -LO https://github.com/kitos9112/${APP}/releases/download/${VERSION}/${APP}_${VERSION}_windows_x86_64.zip
 unzip ${APP}_${VERSION}_windows_x86_64.zip
 ```
