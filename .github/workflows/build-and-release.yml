@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     container:
-      image: golang:1.16.7-alpine3.13
+      image: golang:1.16
     steps:
       - name: Install pre-requisites (1)
         run: |
@@ -31,7 +31,7 @@ jobs:
       - name: Release version
         if: ${{ github.event_name != 'pull_request' }}
         run: |
-          npm  version patch
+          npm version patch
           make release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN  }}
