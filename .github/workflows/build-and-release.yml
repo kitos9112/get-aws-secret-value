@@ -31,6 +31,7 @@ jobs:
       - name: Release version
         if: ${{ github.event_name != 'pull_request' }}
         run: |
+          rm -rf .git/index.lock
           npm version patch
           make release
         env:
