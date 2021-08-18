@@ -6,7 +6,7 @@ Retrieves an AWS secret value as-is and throws its content to `stdout` in plain 
 
 Capable of reading an AWS Profile name as well as a credentials file from the `CLI`
 
-Defaults to AWS SDK standards:
+Defaults to AWS SDK standards for order of precedence, most to least:
 
 * Environment variables.
 * Shared credentials file.
@@ -31,10 +31,10 @@ Help:
 ```
 <!-- TOC -->
 
-- [${APP}](#app)
-  - [Get it](#get-it)
-  - [Use it](#use-it)
-    - [Examples](#examples)
+* [${APP}](#app)
+* [Get it](#get-it)
+* [Use it](#use-it)
+* [Examples](#examples)
 
 <!-- /TOC -->
 
@@ -77,7 +77,7 @@ ${USAGE}
 
 ### Examples
 
-The simplest example that could easily be integrated into a CICD pipeline:
+The simplest example that could easily be integrated into a common CI/CD pipeline:
 
 ```shell
 > export AWS_PROFILE=myAwsProfile
@@ -87,14 +87,18 @@ mySecretValue
 
 ```
 
-Or in case you leverage IaC within your favourite public cloud using Terragrunt, you could retrieve the value of an AWS secret previously created and pre-populated by more complext data structures (e.g. JSON)
+Or in case you leverage IaC using Terragrunt, you could retrieve the value of an AWS secret previously created and pre-populated with more complex data structures (e.g. JSON)
 
 ``` hcl
 # terragrunt.hcl
+
+locals {
+  my_secret_var1 = lookup(jsondecode(run_cmd("--terragrunt-quiet", "/usr/local/bin/aws-get-secret-value", "--secret-name", "my_secret", "--aws-region", "eu-west-1")), "secretKey1")
+}
+
 inputs = {
-my_secret_var1 = lookup(jsondecode(run_cmd("--terragrunt-quiet", "/usr/local/bin/aws-get-secret-value", "--secret-name", "my_secret", "--aws-region", "eu-west-1")), "secretKey1")
-my_secret_var2 = lookup(jsondecode(run_cmd("--terragrunt-quiet", "/usr/local/bin/aws-get-secret-value", "--secret-name", "my_secret", "--aws-region", "eu-west-1")), "secretKey2")
+  my_password = local.my_secret_var1
 }
 ```
 
-As you can see, a simple cross-platform binary file could be utilised in many scenarios that aid when retrieving an AWS secret value.
+As you can see, a simple cross-platform binary file could be utilised in many scenarios that aid at retrieving an AWS secret value presented at stdout.
