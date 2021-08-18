@@ -6,7 +6,7 @@ Retrieves an AWS secret value as-is and throws its content to `stdout` in plain 
 
 Capable of reading an AWS Profile name as well as a credentials file from the `CLI`
 
-Defaults to AWS SDK standards:
+Defaults to AWS SDK standards for order of precedence, most to least:
 
 * Environment variables.
 * Shared credentials file.
@@ -31,10 +31,10 @@ Help:
 ```
 <!-- TOC -->
 
-- [get-aws-secret-value](#app)
-  - [Get it](#get-it)
-  - [Use it](#use-it)
-    - [Examples](#examples)
+* [get-aws-secret-value](#app)
+* [Get it](#get-it)
+* [Use it](#use-it)
+* [Examples](#examples)
 
 <!-- /TOC -->
 
@@ -50,20 +50,20 @@ Or [download the binary](https://github.com/kitos9112/get-aws-secret-value/relea
 
 ```bash
 # Linux x86_64
-curl -L https://github.com/kitos9112/get-aws-secret-value/releases/download/0.2.8/get-aws-secret-value_0.2.8_linux_x86_64.tar.gz | tar xz
+curl -L https://github.com/kitos9112/get-aws-secret-value/releases/download/0.2.9/get-aws-secret-value_0.2.9_linux_x86_64.tar.gz | tar xz
 
 # Linux arm64
-curl -L https://github.com/kitos9112/get-aws-secret-value/releases/download/0.2.8/get-aws-secret-value_0.2.8_linux_arm64.tar.gz | tar xz
+curl -L https://github.com/kitos9112/get-aws-secret-value/releases/download/0.2.9/get-aws-secret-value_0.2.9_linux_arm64.tar.gz | tar xz
 
 # OS X x86_64
-curl -L https://github.com/kitos9112/get-aws-secret-value/releases/download/0.2.8/get-aws-secret-value_0.2.8_osx_x86_64.tar.gz | tar xz
+curl -L https://github.com/kitos9112/get-aws-secret-value/releases/download/0.2.9/get-aws-secret-value_0.2.9_osx_x86_64.tar.gz | tar xz
 
 # OS X arm64
-curl -L https://github.com/kitos9112/get-aws-secret-value/releases/download/0.2.8/get-aws-secret-value_0.2.8_osx_arm64.tar.gz | tar xz
+curl -L https://github.com/kitos9112/get-aws-secret-value/releases/download/0.2.9/get-aws-secret-value_0.2.9_osx_arm64.tar.gz | tar xz
 
 # Windows x86_64
-curl -LO https://github.com/kitos9112/get-aws-secret-value/releases/download/0.2.8/get-aws-secret-value_0.2.8_windows_x86_64.zip
-unzip get-aws-secret-value_0.2.8_windows_x86_64.zip
+curl -LO https://github.com/kitos9112/get-aws-secret-value/releases/download/0.2.9/get-aws-secret-value_0.2.9_windows_x86_64.zip
+unzip get-aws-secret-value_0.2.9_windows_x86_64.zip
 ```
 
 ## Use it
@@ -77,7 +77,7 @@ get-aws-secret-value [OPTIONS] [COMMAND [ARGS...]]
 
 ### Examples
 
-The simplest example that could easily be integrated into a CICD pipeline:
+The simplest example that could easily be integrated into a common CI/CD pipeline:
 
 ```shell
 > export AWS_PROFILE=myAwsProfile
@@ -87,14 +87,18 @@ mySecretValue
 
 ```
 
-Or in case you leverage IaC within your favourite public cloud using Terragrunt, you could retrieve the value of an AWS secret previously created and pre-populated by more complext data structures (e.g. JSON)
+Or in case you leverage IaC using Terragrunt, you could retrieve the value of an AWS secret previously created and pre-populated with more complex data structures (e.g. JSON)
 
 ``` hcl
 # terragrunt.hcl
+
+locals {
+  my_secret_var1 = lookup(jsondecode(run_cmd("--terragrunt-quiet", "/usr/local/bin/aws-get-secret-value", "--secret-name", "my_secret", "--aws-region", "eu-west-1")), "secretKey1")
+}
+
 inputs = {
-my_secret_var1 = lookup(jsondecode(run_cmd("--terragrunt-quiet", "/usr/local/bin/aws-get-secret-value", "--secret-name", "my_secret", "--aws-region", "eu-west-1")), "secretKey1")
-my_secret_var2 = lookup(jsondecode(run_cmd("--terragrunt-quiet", "/usr/local/bin/aws-get-secret-value", "--secret-name", "my_secret", "--aws-region", "eu-west-1")), "secretKey2")
+  my_password = local.my_secret_var1
 }
 ```
 
-As you can see, a simple cross-platform binary file could be utilised in many scenarios that aid when retrieving an AWS secret value.
+As you can see, a simple cross-platform binary file could be utilised in many scenarios that aid at retrieving an AWS secret value presented at stdout.
