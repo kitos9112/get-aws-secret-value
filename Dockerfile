@@ -1,4 +1,4 @@
-FROM golang:1.17.3-alpine AS build
+FROM golang:1.17.6-alpine AS build
 RUN apk add --no-cache make jq
 WORKDIR /go/src/github.com/kitos9112/get-aws-secret-value.git/
 COPY . .
