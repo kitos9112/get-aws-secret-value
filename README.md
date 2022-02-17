@@ -31,10 +31,10 @@ Help:
 ```
 <!-- TOC -->
 
-* [get-aws-secret-value](#app)
-* [Get it](#get-it)
-* [Use it](#use-it)
-* [Examples](#examples)
+- [get-aws-secret-value](#get-aws-secret-value)
+  - [Get it](#get-it)
+  - [Use it](#use-it)
+    - [Examples](#examples)
 
 <!-- /TOC -->
 
@@ -77,14 +77,15 @@ get-aws-secret-value [OPTIONS] [COMMAND [ARGS...]]
 
 ### Examples
 
-The simplest example that could easily be integrated into a common CI/CD pipeline:
+A very basic examples:
 
 ```shell
+# 1- Rely on ENV variables
 > export AWS_PROFILE=myAwsProfile
 > export AWS_REGION=eu-west-1
 > get-aws-secret-value --secret-name my_secret_name
 mySecretValue
-
+# 2- Override or set AWS-specific commands via CLI options
 ```
 
 Or in case you leverage IaC using Terragrunt, you could retrieve the value of an AWS secret previously created and pre-populated with more complex data structures (e.g. JSON)
