@@ -31,7 +31,7 @@ Help:
 ```
 <!-- TOC -->
 
-* [${APP}](#app)
+* [${APP}](#${APP})
 * [Get it](#get-it)
 * [Use it](#use-it)
 * [Examples](#examples)
@@ -80,9 +80,9 @@ ${USAGE}
 The simplest example that could easily be integrated into a common CI/CD pipeline:
 
 ```shell
-> export AWS_PROFILE=myAwsProfile
-> export AWS_REGION=eu-west-1
-> get-aws-secret-value --secret-name my_secret_name
+$ export AWS_PROFILE=myAwsProfile
+$ export AWS_REGION=eu-west-1
+$ get-aws-secret-value --secret-name my_secret_name
 mySecretValue
 
 ```
